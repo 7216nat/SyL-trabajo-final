@@ -1,0 +1,6 @@
+sudo 
+sudo apt install gcc-multilib g++-multilib
+/usr/bin/g++-9 -std=c++11 -fno-stack-protector -ggdb -m32 messages_sp.cpp -o messages
+
+
+x/48xw *&enteredPassword-0x10
