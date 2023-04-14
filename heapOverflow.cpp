@@ -4,9 +4,9 @@
 #include <cstring>
 #include <memory>
 #include <string>
-#define MAX_PASSWORD_LENGTH 8   // 8 bytes
+#define MAX_PASSWORD_LENGTH 7   // 8 bytes
 
-int main(void){
+void example(){
     std::unique_ptr<char[]> enteredPassword(new char[MAX_PASSWORD_LENGTH]);
     std::unique_ptr<char[]> loggedInStatus(new char[MAX_PASSWORD_LENGTH]);
 
@@ -14,6 +14,8 @@ int main(void){
     printf("Enter your password to access the system: ");
     std::cin >> enteredPassword.get();
 
+    printf("enteredPassword value: %s\n", enteredPassword.get());
+    printf("loggedInStatus value: %s\n", loggedInStatus.get());
     if(strcmp(enteredPassword.get(), "SecretPassword")==0){
         printf("Your password is correct\n");
         strcpy(loggedInStatus.get(), "LoggedIn");
@@ -27,4 +29,7 @@ int main(void){
 
     printf("enteredPassword value: %s\n", enteredPassword.get());
     printf("loggedInStatus value: %s\n", loggedInStatus.get());
+}
+int main(void){
+    example();
 }
