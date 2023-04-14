@@ -2,32 +2,38 @@
 #include <stdlib.h>
  
 void danglingPointer1() {
-    int *ptr = (int *)malloc(sizeof(int)); // normal pointer
+    // puntero a entero
+    printf("------ Dangling Pointer 1 --------\n");
+    int *ptr = (int *)malloc(sizeof(int));
  
     *ptr = 15;
     printf("Variable definida a: %d\n", *ptr);
  
-    // memory block deallocated using free() function
+    // liberar memoria
     free(ptr);
 
-    // here ptr acts as a dangling pointer
+    // ptr es un puntero huerfano
     printf("Puntero liberado, entonces valor se queda indefinido: %d\n", *ptr);
+    printf("------ Dangling Pointer 1 --------\n\n");
+    return;
 }
 
 void danglingPointer(int *ptr) {
     int temp = 10;
-    ptr = &temp; // acting as normal pointer
-    // now ptr is a dangling pointer
-    printf("Si se asigna a una direccion de una variable en stack: ptr = temp = %d\n", *ptr);
+    // apuntando a una variable en stack
+    ptr = &temp;
+    // El valor se puede acceder mediante los dos punteros
+    printf("Si se asigna a una direccion de una variable en stack: ptr(%d) = temp(%d) = %d\n", *ptr, temp, *ptr);
     return;
 }
 
 void danglingPointer2() {
     int *ptr; 
-
+    printf("------ Dangling Pointer 2 --------\n");
     danglingPointer(ptr);
-
+    // ptr es un puntero huerfano
     printf("Luego se intenta acceder desde la funcion invocante: indefinido -> %d\n", *ptr);
+    printf("------ Dangling Pointer 2 --------\n\n");
 }
 
 int main() {
