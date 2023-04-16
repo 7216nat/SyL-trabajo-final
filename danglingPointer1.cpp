@@ -9,7 +9,7 @@ using namespace std;
 void danglingPointer1() {
     std::unique_ptr<int> ptr(new int);
     // definir un valor a la variable
-    *ptr.get() = 15;
+    *ptr = 15;
     printf("Variable definida a: %d\n", *ptr);
     
     // liberar el puntero con la funcion reset

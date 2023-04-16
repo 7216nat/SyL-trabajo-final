@@ -12,7 +12,7 @@ void danglingPointer3() {
     std::shared_ptr<int> ptr2;
 
     ptr2 = ptr1;
-    printf("2 variables 1 direccion de memoria reservada --> ptr1: %d, ptr2: %d\n", *ptr1, *ptr2);
+    cout << "2 variables 1 direccion de memoria reservada ptr1 = ptr2 = " << *ptr1 <<" --> ptr1: " << ptr1.get() <<  " ptr2: " << ptr2.get() << endl;
 
     printf("Libera la memoria de ptr1 \n");
     // liberar el puntero ptr1
