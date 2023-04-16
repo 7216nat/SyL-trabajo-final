@@ -25,4 +25,7 @@ int main(void){
 
     printf("enteredPassword value: %s\n", enteredPassword);
     printf("loggedInStatus value: %s\n", loggedInStatus);
+    
+    free(enteredPassword);
+    free(loggedInStatus);
 }
