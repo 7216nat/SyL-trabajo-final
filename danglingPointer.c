@@ -18,21 +18,22 @@ void danglingPointer1() {
     return;
 }
 
-void danglingPointer(int *ptr) {
+int *danglingPointer() {
     int temp = 10;
     // apuntando a una variable en stack
-    ptr = &temp;
-    // El valor se puede acceder mediante los dos punteros
-    printf("Si se asigna a una direccion de una variable en stack: ptr(%d) = temp(%d) = %d\n", *ptr, temp, *ptr);
-    return;
+    printf("Se devuelve una variable en stack %d\n", temp);
+    return &temp;
 }
 
 void danglingPointer2() {
     int *ptr; 
     printf("------ Dangling Pointer 2 --------\n");
-    danglingPointer(ptr);
+    printf("Se invoca una funcion que devuelve una variable en stack\n");
+    ptr = danglingPointer();
     // ptr es un puntero huerfano
-    printf("Luego se intenta acceder desde la funcion invocante: indefinido -> %d\n", *ptr);
+    printf("Luego se intenta acceder desde la funcion invocante:\n");
+    printf("\n");
+    printf("indefinido -> %d\n", *ptr);
     printf("------ Dangling Pointer 2 --------\n\n");
 }
 
@@ -58,7 +59,7 @@ void danglingPointer3() {
 
 int main() {
     danglingPointer1();
-    danglingPointer2();
     danglingPointer3();
+    danglingPointer2();
     return 0;
 }
